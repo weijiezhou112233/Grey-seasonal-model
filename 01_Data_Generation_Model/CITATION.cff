@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the repository version used."
+title: "GreyDataGeneration: MATLAB Toolkit for Grey Data Generation Operators"
+version: 0.1.0
+date-released: 2026-11-08
+authors:
+  - family-names: "Zhou"
+    given-names: "Weijie"
