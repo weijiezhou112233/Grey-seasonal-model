@@ -116,11 +116,9 @@ uilabel(settingGrid,'Text','验证样本数');
 holdoutField = uieditfield(settingGrid,'numeric','Value',4,'Limits',[0 Inf],...
     'RoundFractionalValues','on');
 uilabel(settingGrid,'Text','模型参数');
-parameterLabel = uilabel(settingGrid,'Text','默认参数；可在高级设置中调整',...
-    'WordWrap','on');
+parameterLabel = uilabel(settingGrid,'Text','默认参数；可在高级设置中调整');
 uilabel(settingGrid,'Text','特征分析');
-featureLabel = uilabel(settingGrid,'Text','导入数据后点击“分析序列特征”。',...
-    'WordWrap','on');
+featureLabel = uilabel(settingGrid,'Text','导入数据后点击“分析序列特征”。');
 uibutton(settingGrid,'Text','分析序列特征','ButtonPushedFcn',@analyzeSeries);
 uibutton(settingGrid,'Text','推荐基准模型','ButtonPushedFcn',@recommendModel);
 
