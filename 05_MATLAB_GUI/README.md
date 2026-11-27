@@ -11,7 +11,7 @@ addpath(genpath(pwd));
 GreySeasonalGUI
 ```
 
-**Requirement:** MATLAB R2020a or later. The GUI uses `uifigure`, `uigridlayout`, `uitable`, `readtable`, `writetable`, and `exportgraphics`. Individual model implementations may have their own data restrictions.
+**Requirement:** MATLAB R2018b or later. The GUI avoids `uilabel.WordWrap` and `exportgraphics`, which are not available in R2018b. The GUI uses `uifigure`, `uigridlayout`, `uitable`, `readtable`, `writetable`, and `print` for chart export. Individual model implementations may have their own data restrictions.
 
 ## 2. Functions
 
