@@ -225,7 +225,7 @@ refreshModelList();
         featureLabel.Text='导入数据后点击“分析序列特征”。';
     end
 
-    function clearResults(~,~)
+    function clearResults(varargin)
         lastResult=[];
         resultTable.Data=cell(0,5);
         metricTable.Data=cell(0,2);
@@ -299,10 +299,10 @@ refreshModelList();
             if std(x)==0
                 trendCorr=0; seasonalCorr=NaN;
             else
-                trendCorr=corr(t,x,'Rows','complete');
+                cc=corrcoef(t,x); trendCorr=cc(1,2);
                 s=round(periodField.Value);
                 if s>=1 && n>s
-                    seasonalCorr=corr(x(1:end-s),x(1+s:end),'Rows','complete');
+                    cc=corrcoef(x(1:end-s),x(1+s:end)); seasonalCorr=cc(1,2);
                 else
                     seasonalCorr=NaN;
                 end
