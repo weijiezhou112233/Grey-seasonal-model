@@ -2,6 +2,7 @@ function GreySeasonalGUI
 % GREYSEASONALGUI
 % Graphical interface for the standalone grey seasonal models in this repo.
 %
+% Compatible with MATLAB R2018b and later.
 % Start from the repository root:
 %   addpath(genpath(pwd));
 %   GreySeasonalGUI
@@ -530,7 +531,11 @@ refreshModelList();
         end
         [file,path]=uiputfile('GreySeasonal_Forecast.png','保存预测图');
         if isequal(file,0), return; end
-        exportgraphics(plotAxes,fullfile(path,file),'Resolution',180);
+        tempFig = figure('Visible','off','Color','w');
+        tempAx = copyobj(plotAxes,tempFig);
+        set(tempAx,'Units','normalized','Position',[0.13 0.12 0.82 0.80]);
+        print(tempFig,fullfile(path,file),'-dpng','-r180');
+        close(tempFig);
     end
 end
 
