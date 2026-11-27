@@ -529,9 +529,20 @@ refreshModelList();
         end
         [file,path]=uiputfile('GreySeasonal_Forecast.png','保存预测图');
         if isequal(file,0), return; end
+        R=lastResult;
         tempFig = figure('Visible','off','Color','w');
-        tempAx = copyobj(plotAxes,tempFig);
-        set(tempAx,'Units','normalized','Position',[0.13 0.12 0.82 0.80]);
+        tempAx = axes('Parent',tempFig);
+        hold(tempAx,'on');
+        n=numel(R.x);
+        plot(tempAx,1:n,R.x,'ko-','LineWidth',1.1,'DisplayName','原始数据');
+        plot(tempAx,1:n,R.fitted,'b--','LineWidth',1.4,'DisplayName','样本内拟合');
+        plot(tempAx,n+(1:numel(R.forecast)),R.forecast,'r*-',...
+            'LineWidth',1.5,'DisplayName','未来预测');
+        line(tempAx,[n n],ylim(tempAx),'Color','k','LineStyle',':',...
+            'HandleVisibility','off');
+        xlabel(tempAx,'时间序号'); ylabel(tempAx,'观测值');
+        title(tempAx,R.modelDisplay,'Interpreter','none');
+        legend(tempAx,'Location','best'); grid(tempAx,'on');
         print(tempFig,fullfile(path,file),'-dpng','-r180');
         close(tempFig);
     end
