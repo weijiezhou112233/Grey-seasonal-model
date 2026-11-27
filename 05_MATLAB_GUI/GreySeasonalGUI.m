@@ -168,7 +168,7 @@ refreshModelList();
             '选择时间序列数据');
         if isequal(file,0), return; end
         try
-            T = readtable(fullfile(path,file),'VariableNamingRule','preserve');
+            T = readtable(fullfile(path,file));
             if width(T)<2
                 error('数据文件至少应包含一列时间和一列数值序列。');
             end
